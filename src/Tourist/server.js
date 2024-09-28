@@ -2,22 +2,20 @@ import mysql from 'mysql2';
 import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001; // Use the PORT environment variable provided by Render
+const port = 3001;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// MySQL database connection using environment variables
+// MySQL database connection
 const db = mysql.createConnection({
-  host: process.env.DB_HOST, // Replace with your MySQL host
-  user: process.env.DB_USER, // Replace with your MySQL username
-  password: process.env.DB_PASSWORD, // Replace with your MySQL password
-  database: process.env.DB_NAME, // Replace with your MySQL database name
+  host: 'localhost',
+  user: 'root',
+  password: 'rootomk@2004', // Replace with your MySQL password
+  database: 'reviews',
 });
 
 db.connect((err) => {
@@ -32,8 +30,8 @@ db.connect((err) => {
 const transporter = nodemailer.createTransport({
   service: 'gmail', // You can use another service if you like
   auth: {
-    user: process.env.EMAIL_USER, // Replace with your email from environment variable
-    pass: process.env.EMAIL_PASS, // Replace with your email password or app password from environment variable
+    user: 'navizit27@gmail.com', // Replace with your email
+    pass: 'bhdi qsla ukfr mexx', // Replace with your email password or app password
   },
 });
 
@@ -52,8 +50,8 @@ app.get("/api/reviews", (req, res) => {
 
 // Endpoint to submit a review
 app.post('/api/reviews', (req, res) => {
-  const { rating, comment, webname, username, initial } = req.body; // Include username
-  db.query("INSERT INTO reviews (rating, comment, placeId, username, initial) VALUES (?, ?, ?, ?, ?)", 
+  const { rating, comment, webname, username,  initial } = req.body; // Include username
+  db.query("INSERT INTO reviews (rating, comment, placeId, username,  initial) VALUES (?, ?, ?, ?,?)", 
            [rating, comment, webname, username, initial], 
            
            (error) => {
@@ -61,6 +59,7 @@ app.post('/api/reviews', (req, res) => {
       console.log(webname);
       console.log("Error inserting review into MySQL:", error);
       return res.status(500).send("Error inserting review");
+     
     }
     res.status(201).send("Review added successfully");
   });
@@ -71,9 +70,9 @@ app.post("/api/signup", async (req, res) => {
   const { username, email, password } = req.body;
   const otp = Math.floor(100000 + Math.random() * 900000).toString(); // Generate a 6-digit OTP
   otpStore[email] = otp; // Store OTP temporarily
-
+ 
   const mailOptions = {
-    from: process.env.EMAIL_USER, // Use email from environment variable
+    from: 'navizit27@gmail.com',
     to: email,
     subject: 'Your OTP Code',
     text: `Your OTP code is ${otp}`,
@@ -130,7 +129,6 @@ app.post("/api/login", (req, res) => {
   );
 });
 
-// Listen on 0.0.0.0 to make it accessible externally
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server is running on http://0.0.0.0:${port}`);
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
 });
