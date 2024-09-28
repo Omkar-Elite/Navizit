@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import './NavTourist.css'; // Import custom CSS for hover effects
+import './NavTOurist.css'; // Import custom CSS for hover effects
 
 export default function NavTourist() {
   const [isOpen, setIsOpen] = useState(false);
