@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001; // Use the PORT environment variable
-const host = process.env.HOST;
+const host = process.env.HOST || '0.0.0.0';
 // Middleware
 app.use(cors());
 app.use(express.json());
