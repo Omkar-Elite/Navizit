@@ -2,10 +2,13 @@ import mysql from 'mysql2';
 import express from 'express';
 import cors from 'cors';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001; // Use the PORT environment variable
-
+const host = process.env.HOST;
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -127,6 +130,6 @@ app.post("/api/login", (req, res) => {
   );
 });
 
-app.listen(port,  () => { 
+app.listen(port, host,  () => { 
   console.log(`Server is running on http://0.0.0.0:${port}`);
 });
