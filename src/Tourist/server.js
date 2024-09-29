@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;// Use the PORT environment variable
-const host = '0.0.0.0';
+
 // Middleware
 app.use(cors());
 app.use(express.json());
@@ -130,6 +130,6 @@ app.post("/api/login", (req, res) => {
   );
 });
 
-app.listen(port, host,   () => { 
+app.listen(port,    () => { 
   console.log(`Server is running on http://${host}:${port}`);
 });
