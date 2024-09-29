@@ -127,6 +127,6 @@ app.post("/api/login", (req, res) => {
   );
 });
 
-app.listen(port, '0.0.0.0', () => { // Bind to 0.0.0.0
+app.listen(port,  () => { 
   console.log(`Server is running on http://0.0.0.0:${port}`);
 });
