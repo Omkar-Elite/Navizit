@@ -1,4 +1,9 @@
 import React from "react";
+import facebookIcon from './Facebook.svg';
+import instagramIcon from './Instagram.svg';
+import twitterIcon from './Twitter.svg';
+import linkedinIcon from './Linkedin.svg';
+
 
 export default function AllFooter() {
   return (
@@ -24,16 +29,16 @@ export default function AllFooter() {
         {/* Social Media Section */}
         <div className="flex space-x-6 mr-16">
           <a href="https://www.facebook.com/profile.php?id=61566412442595" target="_blank" rel="noopener noreferrer">
-            <img src="./src/HomePage/Footer/Facebook.svg" alt="Facebook" className="h-6 w-6 hover:opacity-75" />
+            <img src={facebookIcon} alt="Facebook" className="h-6 w-6 hover:opacity-75" />
           </a>
           <a href="https://x.com/navizitguide" target="_blank" rel="noopener noreferrer">
-            <img src="./src/HomePage/Footer/Twitter.svg" alt="Twitter" className="h-6 w-6 hover:opacity-75" />
+            <img src={instagramIcon} alt="Twitter" className="h-6 w-6 hover:opacity-75" />
           </a>
           <a href="https://www.instagram.com/navizitguide/" target="_blank" rel="noopener noreferrer">
-            <img src="./src/HomePage/Footer/Instagram.svg" alt="Instagram" className="h-6 w-6 hover:opacity-75" />
+            <img src={twitterIcon} alt="Instagram" className="h-6 w-6 hover:opacity-75" />
           </a>
           <a href="https://www.linkedin.com/in/navizit-guide-22129a330/" target="_blank" rel="noopener noreferrer" className="h-6 w-6">
-            <img src="./src/HomePage/Footer/Linkedin.svg" alt="LinkedIn" className="m-0 p-0  hover:opacity-75" />
+            <img src={linkedinIcon} alt="LinkedIn" className="m-0 p-0  hover:opacity-75" />
           </a>
         </div>
       </div>
